@@ -1,10 +1,10 @@
 <div class="content-wrapper full-wide">
     <!-- Content Header (Page header) -->
     <section class="content-header">
-        <h1>Dashboard</h1>
+        <h1>Gejala</h1>
         <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-home"></i> Home</a></li>
-            <li class="active"><i class="fa fa-dashboard"></i> Dashboard</li>
+            <li class="active"><i class="fa fa-dashboard"></i> Gejala</li>
         </ol>
 
     </section>
