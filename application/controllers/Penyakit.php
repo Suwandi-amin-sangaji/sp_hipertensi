@@ -25,11 +25,17 @@ class Penyakit extends CI_Controller
     public function penyakit_add_act()
     {
         $this->form_validation->set_rules('nama', 'Nama Penyakit', 'required|trim');
+        $this->form_validation->set_rules('definisi', 'Definisi', 'required|trim');
+        $this->form_validation->set_rules('penyebab', 'Penyebab', 'required|trim');
+        $this->form_validation->set_rules('solusi', 'Solusu', 'required|trim');
         if ($this->form_validation->run() != true) {
             $this->penyakit_add();
         } else {
             $data = [
-                'nama' => $this->input->post('nama')
+                'nama' => $this->input->post('nama'),
+                'definisi' => $this->input->post('definisi'),
+                'penyebab' => $this->input->post('penyebab'),
+                'solusi' => $this->input->post('solusi')
             ];
             $this->m_vic->insert_data($data, 'penyakit');
             $this->session->set_flashdata('suces', 'Data penyakit berhasil ditambah');
@@ -52,7 +58,10 @@ class Penyakit extends CI_Controller
     {
         $id = $this->input->post('id');
         $data = [
-            'nama' => $this->input->post('nama')
+            'nama' => $this->input->post('nama'),
+            'definisi' => $this->input->post('definisi'),
+            'penyebab' => $this->input->post('penyebab'),
+            'solusi' => $this->input->post('solusi')
         ];
         $this->m_vic->update_data(['id' => $id], $data, 'penyakit');
         $this->session->set_flashdata('suces', 'Data penyakit berhasil diubah');

@@ -4,23 +4,6 @@ defined('BASEPATH') or exit('No direct script access allowed');
 class Mylib
 {
 
-	/*fungsi membuat menampilkan halaman tertentu*/
-	// function dview($view, $data = array())
-	// {
-	// 	$ci = &get_instance();
-	// 	if (!array_key_exists('title', $data)) {
-	// 		$data['title'] = 'BKD - Beban Kerja Dosen Universitas Malikussaleh';
-	// 	}
-	// 	$data['menu'] = $ci->uri->segment(3);
-	// 	$ci->load->view('dosen/template/v_header', $data);
-	// 	$ci->load->view('dosen/template/v_navbar', $data);
-	// 	if ($data) {
-	// 		$ci->load->view('dosen/' . $view, $data);
-	// 	} else {
-	// 		$ci->load->view($view);
-	// 	}
-	// 	$ci->load->view('dosen/template/v_footer', $data);
-	// }
 
 	function view($view, $data = array())
 	{
@@ -74,21 +57,21 @@ class Mylib
 	// 	$ci->load->view('home/footer', $data);
 	// }
 
-	function autoCode($field_code, $initial = 'SMBRG', $tabel)
-	{
-		$ci = &get_instance();
-		$ci->db->order_by($field_code, 'DESC');
-		$res = $ci->db->get($tabel);
-		$data = $res->row_array();
-		if ($data) {
-			$value = $data[$field_code];
-			$result = substr($value, 4, 8);
-			$result = (int)$result;
-			$result = $result + 1;
-			$coderesult = $initial . "-" . STR_PAD($result, 6, "0", STR_PAD_LEFT);
-		} else {
-			$coderesult = $initial . "-" . "000001";
-		}
-		return $coderesult;
-	}
+	// function autoCode($field_code, $initial = 'SMBRG', $tabel)
+	// {
+	// 	$ci = &get_instance();
+	// 	$ci->db->order_by($field_code, 'DESC');
+	// 	$res = $ci->db->get($tabel);
+	// 	$data = $res->row_array();
+	// 	if ($data) {
+	// 		$value = $data[$field_code];
+	// 		$result = substr($value, 4, 8);
+	// 		$result = (int)$result;
+	// 		$result = $result + 1;
+	// 		$coderesult = $initial . "-" . STR_PAD($result, 6, "0", STR_PAD_LEFT);
+	// 	} else {
+	// 		$coderesult = $initial . "-" . "000001";
+	// 	}
+	// 	return $coderesult;
+	// }
 }

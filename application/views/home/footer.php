@@ -2,7 +2,7 @@
 <!-- Main Footer -->
 <footer class="main-footer full-wide dark-bg">
     <div class="pull-right hidden-xs"> Version 1.0</div>
-    Copyright &copy; 2017 Yourdomian. All rights reserved.
+    Copyright &copy; <?= date('Y') ?> Yourdomian. All rights reserved.
 </footer>
 </div>
 <!-- wrapper -->

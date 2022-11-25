@@ -112,15 +112,21 @@ class Diagnosa extends CI_Controller
             $max = array_keys($array_total, max($array_total));
             $index = $max[0];
             $nama = $this->db->select('nama')->get_where('penyakit', ['id' => $array_penyakit[$index]])->row();
+            $definisi = $this->db->select('definisi')->get_where('penyakit', ['id' => $array_penyakit[$index]])->row();
+            $penyebab = $this->db->select('penyebab')->get_where('penyakit', ['id' => $array_penyakit[$index]])->row();
+            $solusi = $this->db->select('solusi')->get_where('penyakit', ['id' => $array_penyakit[$index]])->row();
             $data = [
                 'nilai_diagnosa' => $array_total[$index],
-                'penyakit' => $nama->nama
+                'penyakit' => $nama->nama,
+                'definisi' => $definisi->definisi,
+                'penyebab' => $penyebab->penyebab,
+                'solusi' => $solusi->solusi
             ];
             $this->m_vic->update_data(['id' => $id], $data, 'pasien');
             $p_nilai = "";
             $p_id = "";
-            if (count($array_total) >= 3) {
-                $cari = 3;
+            if (count($array_total) >= 4) {
+                $cari = 4;
             } else {
                 $cari = count($array_total);
             }
@@ -138,7 +144,10 @@ class Diagnosa extends CI_Controller
             }
             $data = [
                 'array_nilai' => substr($p_nilai, 1),
-                'array_id' => substr($p_id, 1)
+                'array_id' => substr($p_id, 1),
+                'definisi' => $definisi->definisi,
+                'penyebab' => $penyebab->penyebab,
+                'solusi' => $solusi->solusi
             ];
             $this->m_vic->update_data(['id' => $id], $data, 'pasien');
             $data['pasien'] = $this->m_vic->edit_data(['id' => $id], 'pasien')->row();

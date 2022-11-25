@@ -28,4 +28,16 @@ class Pasien extends CI_Controller
             $this->mylib->view('pasien_detail', $data);
         }
     }
+
+    public function hapus($id = 0)
+    {
+        if ($id == 0) {
+            $this->session->set_flashdata('error', 'Data yang anda maksud tidak ditemukan');
+            redirect('Pasien?notif=error');
+        } else {
+            $this->m_vic->delete_data(['id' => $id], 'pasien');
+            $this->session->set_flashdata('suces', 'Data Pasien berhasil dihapus');
+            redirect('Pasien?notif=suces');
+        }
+    }
 }

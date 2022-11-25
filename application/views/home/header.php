@@ -62,35 +62,19 @@
                                 <!-- User Account Menu -->
                                 <li class="dropdown user user-menu"> <a href="#" class="dropdown-toggle"
                                         data-toggle="dropdown">
-                                        <img src="<?= base_url() ?>assets/dist/img/img1.jpg" class="user-image"
-                                            alt="User Image"> <span class="hidden-xs">Florence Douglas</span> </a>
+                                        <i class="fa fa-sign-in"></i><span
+                                            class="hidden-xs"><?= $this->session->userdata('name') ?></span> </a>
                                     <ul class="dropdown-menu">
-                                        <li class="user-header">
-                                            <div class="pull-left user-img"><img
-                                                    src="<?= base_url() ?>assets/dist/img/img1.jpg"
-                                                    class="img-responsive" alt="User"></div>
-                                            <p class="text-left">Florence Douglas <small>florence@gmail.com</small> </p>
-                                            <div class="view-link text-left"><a href="#">View Profile</a> </div>
+
+                                        <li>
+                                            <?php
+                                            if ($this->session->userdata('status') == 'Login') {
+                                                echo '<a class="dropdown-item" href="' . base_url('Login/logout') . '"><i class="fa fa-power-off "></i> Log Out</a>';
+                                            } else {
+                                                echo '<a class="dropdown-item" href="' . base_url('Login') . '"><i class="fa fa-power-off "></i> Login</a>';
+                                            }
+                                            ?>
                                         </li>
-                                        <li><a href="#"><i class="icon-profile-male"></i> My Profile</a></li>
-                                        <li><a href="#"><i class="icon-wallet"></i> My Balance</a></li>
-                                        <li><a href="#"><i class="icon-envelope"></i> Inbox</a></li>
-                                        <li role="separator" class="divider"></li>
-                                        <li><a href="#"><i class="icon-gears"></i> Account Setting</a></li>
-                                        <li role="separator" class="divider"></li>
-                                        <li><a href="#"><i class="fa fa-power-off"></i>
-                                                <ul class="dropdown-menu dropdown-menu-end user-dd animated"
-                                                    aria-labelledby="navbarDropdown">
-                                                    <?php
-                                                    if ($this->session->userdata('status') == 'Login') {
-                                                        echo '<a class="dropdown-item" href="' . base_url('Login/logout') . '"><i class="fa fa-power-off me-1 ms-1"></i> Log Out</a>';
-                                                    } else {
-                                                        echo '<a class="dropdown-item" href="' . base_url('Login') . '"><i class="fa fa-power-off me-1 ms-1"></i> Login</a>';
-                                                    }
-                                                    ?>
-                                                    <div class="dropdown-divider"></div>
-                                                </ul>
-                                            </a></li>
                                     </ul>
                                 </li>
                             </ul>
